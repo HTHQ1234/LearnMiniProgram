@@ -3,3 +3,15 @@
   color: red;
   font-size: 30px;
 }
+.content{
+  color: aquamarine;
+}
+.red{
+  color: red;
+}
+.green{
+  color: green;
+}
+.blue{
+  color:blue;
+}

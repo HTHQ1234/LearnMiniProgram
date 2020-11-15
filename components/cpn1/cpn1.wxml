@@ -1,0 +1,4 @@
+<!--components/cpn1/cpn1.wxml-->
+<scroll-view class="scroll" scroll-x>
+  <view wx:for="{{8}}" class="box">{{item}}</view>
+</scroll-view>

@@ -1,0 +1,14 @@
+/* components/cpn1/cpn1.wxss */
+.scroll{
+  height: 200rpx;
+  background-color: orchid;
+  display: flex;
+  white-space: nowrap;
+}
+.box{
+  height: 100rpx;
+  width:100rpx;
+  margin: 50rpx;
+  background-color: palegreen;
+  display: inline-block;
+}
