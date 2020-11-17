@@ -1,66 +1,78 @@
 // pages/home/home.js
 Page({
-
-  /**
-   * 页面的初始数据
-   */
-  data: {
-
+  handleShowToast(){
+    wx.showToast({
+      title: '提交中',
+      duration:3000,
+      icon:'loading',
+      mask:true,
+      success:function(){
+        console.log('展示弹窗成功')
+      },
+      fail:function(){
+        console.log('展示弹窗失败')
+      },
+      complete:function(){
+        console.log('完成函数的调用')
+      }
+    });
+    setTimeout(() => {
+      wx.showToast({
+        title: '提交成功',
+      })
+    }, 3000);
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  handleShowModal(){
+    wx.showModal({
+      title:'我是标题',
+      content:'我是内容,哈哈哈',
+      // showCancel:false,
+      cancelText:'退出',
+      cancelColor:'red',
+      success:function(res){
+        console.log(res)
+        if(res.cancel){
+          console.log('用户点击了取消')
+        }else{
+          console.log('用户点击了确定')
+        }
+      }
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  handleShowLoading(){
+    wx.showLoading({
+      title: '加载ing',
+    }),
+    setTimeout(() => {
+      // 必须手动调用hideLoading才会让loading消失
+      wx.hideLoading()
+    }, 1000);
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  handleShowAction(){
+    wx.showActionSheet({
+      itemList: ['相册','拍照'],
+      itemColor:'red',
+      success:function(res){
+        console.log(res);
+        switch(res.tapIndex){
+          case 0:
+            console.log('用户点击了相册');
+            break;
+          case 1:
+            console.log('用户点击了拍照');
+            break;
+          default:
+            console.log('都不是');
+            break;
+        }
+      }
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  onShareAppMessage:function(options){
+    return{
+      title:'你好啊，李银河',
+      path:'/pages/about/about',
+      imageUrl:'https://imgs.ali213.net/oday/uploadfile/2014/06/16/201461615421877586570.jpg'
+    }
   }
 })
